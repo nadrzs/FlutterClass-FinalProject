@@ -80,7 +80,8 @@ class _HomeState extends State<Home> {
                         image: catagories[index].image,
                         catagoryName: catagories[index].catagoryName,
                       );
-                    }),
+                    }
+                ),
               ),
               SizedBox(
                 height: 10.0,

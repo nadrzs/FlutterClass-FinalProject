@@ -1,17 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_application/pages/country.dart';
 
 class NavBar extends StatelessWidget {
+  
   const NavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<String> countryItems = [
+    'India',
+    'USA',
+    'Mexico',
+    'United Emirates Arab',
+    'New Zealand',
+    'Israel',
+    'Indonesia'
+    ];
+
+    List<String> catagoryItems = [
+      'Science',
+      'Business',
+      'Technology',
+      'Sports',
+      'Health',
+      'Entertainment'
+    ];
+
+    List<String> channelItems = [
+      'BBC News',
+      'Times of India',
+      'Politico',
+      'The Washington Post',
+      'Reuters',
+      'CNN',
+      'NBC News',
+      'The Hills',
+      'FOX News'
+    ];
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text('John Doe'), 
+            accountName: const Text('John Doe'),
             accountEmail: const Text('johndoe@gmail.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
@@ -19,31 +50,62 @@ class NavBar extends StatelessWidget {
               ),
             ),
             decoration: BoxDecoration(
-              color: Colors.greenAccent,
-              image: DecorationImage(
-                image: AssetImage('images/profile-background.jpg'),
-                fit: BoxFit.cover
-              )
+                color: Colors.greenAccent,
+                image: DecorationImage(
+                    image: AssetImage('images/profile-background.jpg'),
+                    fit: BoxFit.cover)),
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: DropdownButton<String>(
+                hint: const Text("Select a country"),
+                  items: countryItems.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value)
+                    );
+                  }).toList(),
+                onChanged: (value){}
+              ),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.abc),
-            title: Text('Country'),
-            onTap: () {
-              Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CountryPage()));
-            },
+          SizedBox(
+            height: 6.0,
           ),
-          ListTile(
-            leading: Icon(Icons.album),
-            title: Text('Catagory'),
-            onTap: () => print('Catagory'),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: DropdownButton<String>(
+                hint: const Text("Select a catagory"),
+                  items: catagoryItems.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value)
+                    );
+                  }).toList(),
+                onChanged: (value){}
+              ),
+            ),
           ),
-          ListTile(
-            leading: Icon(Icons.wifi_channel),
-            title: Text('Channel'),
-            onTap: () => print('Channel'),
-          )
+          SizedBox(
+            height: 6.0,
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: DropdownButton<String>(
+                hint: const Text("Select a channel"),
+                  items: channelItems.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value)
+                    );
+                  }).toList(),
+                onChanged: (value){}
+              ),
+            ),
+          ),
         ],
       ),
     );
