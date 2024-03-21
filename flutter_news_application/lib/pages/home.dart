@@ -25,10 +25,7 @@ class _HomeState extends State<Home> {
   List<CatagoryModel> catagories = [];
   List<sliderModel> sliders = [];
 
-  // void updateList(string value){
-
-  // }
-
+  int _selectedCatagory = 0;
   int activeIndex = 0;
   int currentPage = 0;
 
@@ -77,11 +74,12 @@ class _HomeState extends State<Home> {
                     itemCount: catagories.length,
                     itemBuilder: (context, index) {
                       return CatagoryTile(
+                        // value: index,
+                        // groupValue: _selectedCatagory,
                         image: catagories[index].image,
                         catagoryName: catagories[index].catagoryName,
                       );
-                    }
-                ),
+                    }),
               ),
               SizedBox(
                 height: 10.0,
@@ -324,7 +322,7 @@ class _HomeState extends State<Home> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TechnologyOne()));
+                      MaterialPageRoute(builder: (context) => TechnologyOne()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -458,7 +456,7 @@ class _HomeState extends State<Home> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HealthOne()));
+                      MaterialPageRoute(builder: (context) => HealthOne()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -524,8 +522,10 @@ class _HomeState extends State<Home> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => EntertainmentOne()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => EntertainmentOne()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
